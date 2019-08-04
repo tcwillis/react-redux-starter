@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { simpleAction } from './store/actions/simpleAction';
+import { fetchPosts } from './store/actions/postActions';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  simpleAction = event => {
-    this.props.simpleAction();
-  }
   render() {
     return (
       <div className="App">
@@ -25,7 +22,7 @@ class App extends Component {
             Learn React
         </a>
 
-          <button onClick={this.simpleAction}>Test redux action</button>
+          <button onClick={() => this.props.fetchPosts()}>Test redux action</button>
           <pre>
             {
               JSON.stringify(this.props)
@@ -44,7 +41,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
+  fetchPosts: user => dispatch(fetchPosts(user))
 })
 
 export { App };

@@ -1,11 +1,12 @@
 
-import { SIMPLE_ACTION } from '../actionsTypes';
+import { SET_POSTS } from '../actions/types';
 
 export default (state = {}, action) => {
     switch (action.type) {
-        case SIMPLE_ACTION:
+        case SET_POSTS:
             return {
-                result: action.payload
+                ...state,
+                posts: action.payload
             }
         default:
             return state
